@@ -94,7 +94,7 @@ Where:
 * `zXXXX` → slice index
 
 ⚠️ Note:
-The dataset is intentionally limited to 30 slices due to GitHub storage constraints. Full datasets may contain significantly more slices.
+The dataset is intentionally limited to 3 slices due to GitHub storage constraints. Full datasets may contain significantly more slices (around 5000 in total).
 
 ---
 
@@ -188,6 +188,6 @@ URL:
 ## 👨‍🔬 Author
 
 Atefeh Vafaie, Iman R. Kivi, Victor Vilarrasa
+atefeh.vafaie@csic.es
 Global Change Research Group, IMEDEA, CSIC-UIB, Esporles, Spain
-[Your Institution]
-[Your Email]
+
