@@ -11,7 +11,7 @@ A reproducible micro-CT workflow for pore segmentation, porosity quantification,
 ### 3D Pore Size Distribution in a Cylindrical Core Sample (Micro-CT)
 
 <p align="center">
-  <img src="figures/example_result.png" width="600">
+  <img src="figures/example_result.png" width="800">
 </p>
 
 Three-dimensional visualization of pore size classes derived from micro-CT data.
