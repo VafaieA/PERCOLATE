@@ -1,6 +1,6 @@
 # PERCOLATE-V1
 
-**Pore Evaluation and Reconstruction for Cylindrical cOres via Layered Analysis and Three-dimensional Estimation**
+**Pore Extraction and Reconstruction for COre analysis and AnalyTical Evaluation**
 
 A reproducible micro-CT workflow for pore segmentation, porosity quantification, pore size distribution (PSD), and physically scaled 3D visualization of cylindrical core samples.
 
@@ -164,7 +164,7 @@ python 03-Visualizer-Pore-Clustering.py
 
 ## Citation
 
-*PERCOLATE: A Reproducible Micro-CT Framework for Cylindrical Core Pore Segmentation and 3D Quantitative Analysis*
+*PERCOLATE: Pore Extraction and Reconstruction for COre analysis and AnalyTical Evaluation*
 URL:
 
 ---
