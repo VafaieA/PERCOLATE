@@ -11,12 +11,15 @@ A reproducible micro-CT workflow for pore segmentation, porosity quantification,
 ### 3D Pore Size Distribution in a Cylindrical Core Sample (Micro-CT)
 
 <p align="center">
-  <img src="figures/example_result.png" width="420">
+  <img src="figures/example_result.png" width="600">
 </p>
 
 Three-dimensional visualization of pore size classes derived from micro-CT data.
 Colors represent equivalent pore radius classes from small (blue) to large (red).
-Average porosity of the illustrated sample is approximately 6.4%.
+Average porosity of the illustrated sample is approximately 6.4%. Pore size classes can be interactively visualized in the Napari viewer, 
+where individual classes can be toggled on and off. 
+In the static image shown above, all classes are displayed simultaneously, 
+which may lead to visual overlap of smaller pores.
 
 ---
 
