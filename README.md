@@ -37,7 +37,7 @@ This highlights heterogeneity along the sample length.
 ### Porosity Distribution
 
 <p align="center">
-  <img src="figures/porosity_distribution.png" width="500">
+  <img src="figures/porosity_hist.png" width="500">
 </p>
 
 Histogram of porosity values across all slices.
