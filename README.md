@@ -1,193 +1,172 @@
 # PERCOLATE-V1
-Pore Extraction and Reconstruction for COre analysis and AnalyTical Evaluation
-# PERCOLATE
 
-### Pore Extraction and Reconstruction for COre anaLysis using micro-CT
+**Pore Evaluation and Reconstruction for Cylindrical cOres via Layered Analysis and Three-dimensional Estimation**
 
-PERCOLATE is a reproducible micro-CT analysis framework designed for **cylindrical core samples**, enabling pore segmentation, porosity quantification, pore size distribution (PSD) analysis, and physically accurate 3D visualization.
+A reproducible micro-CT workflow for pore segmentation, porosity quantification, pore size distribution (PSD), and physically scaled 3D visualization of cylindrical core samples.
 
 ---
 
-## ✨ Features
+## Example Results
 
-* Interactive segmentation parameter tuning
-* Automated batch pore segmentation
-* Binary pore mask generation (TIFF stack)
-* Porosity computation (full volume)
-* Equivalent pore radius distribution (PSD)
-* 3D connected-component pore analysis
-* Physically scaled 3D visualization in Napari
-* Fully reproducible workflow via JSON parameter tracking
+### 3D Pore Size Distribution in a Cylindrical Core Sample (Micro-CT)
 
----
+<p align="center">
+  <img src="figures/example_result.png" width="420">
+</p>
 
-## 🧭 Workflow
-
-PERCOLATE consists of four main steps:
-
-### 1. Interactive Segmentation
-
-```bash
-python 01-Interactive-segmentation.py
-```
-
-* Define crop region
-* Define cylindrical core mask
-* Adjust threshold (manual / Otsu)
-* Save parameters to JSON
+Three-dimensional visualization of pore size classes derived from micro-CT data.
+Colors represent equivalent pore radius classes from small (blue) to large (red).
+Average porosity of the illustrated sample is approximately 6.4%.
 
 ---
 
-### 2. Batch Segmentation
+### Porosity Variation Along Core Axis
 
-```bash
-python 02A-Batch segmentation.py
-```
+<p align="center">
+  <img src="figures/porosity_vs_slice.png" width="500">
+</p>
 
-* Applies saved parameters to all slices
-* Generates binary pore mask stack
-
----
-
-### 3. Pore Clustering & PSD
-
-```bash
-python 02B-Pore-Clustering.py
-```
-
-* Computes total porosity
-* Performs 3D connected-component labeling
-* Calculates equivalent pore radius
-* Outputs PSD and statistics
+Slice-by-slice porosity variation within the cylindrical core.
+This highlights heterogeneity along the sample length.
 
 ---
 
-### 4. 3D Visualization
+### Porosity Distribution
 
-```bash
-python 03-Visulaizer-Pore-Clustering.py
-```
+<p align="center">
+  <img src="figures/porosity_distribution.png" width="500">
+</p>
 
-* Loads pore volume (preview or full)
-* Applies physical scaling (µm)
-* Classifies pores into size bins
-* Interactive visualization in Napari
+Histogram of porosity values across all slices.
+The distribution reflects spatial variability in pore structure.
 
 ---
 
-## 📁 Example Dataset
+## Workflow
 
-A **lightweight example dataset (30 slices)** is included for demonstration and reproducibility.
+The PERCOLATE pipeline consists of four modular stages:
 
-* Format: TIFF stack
-* Naming convention:
+1. **Interactive Segmentation**
+
+   * Crop definition
+   * Cylindrical masking
+   * Threshold selection
+
+2. **Batch Segmentation**
+
+   * Full stack processing
+   * Binary pore mask generation
+   * Porosity computation
+
+3. **Pore Clustering and PSD Analysis**
+
+   * Connected-component labeling
+   * Equivalent pore radius estimation
+   * Histogram generation
+
+4. **3D Visualization**
+
+   * Physically scaled rendering in Napari
+   * Discrete color mapping
+   * Sample geometry annotation
+
+---
+
+## Repository Structure
 
 ```text
-block00000019_z0000.tif
-block00000019_z0001.tif
-...
-```
-
-Where:
-
-* `block00000019` → sample identifier
-* `zXXXX` → slice index
-
-⚠️ Note:
-The dataset is intentionally limited to 3 slices due to GitHub storage constraints. Full datasets may contain significantly more slices (around 5000 in total).
-
----
-
-## 📦 Outputs
-
-* `mask_stack.tif` → binary pore volume
-* `pore_preview_3d.tif` → downsampled 3D pore volume
-* `pore_eq_radius_hist_um.csv` → PSD histogram
-* `pore_components.csv` → component statistics
-* `summary.json` → porosity and metadata
-
----
-
-## 📐 Pore Size Definition
-
-Equivalent pore radius is computed as:
-
-[
-r_{eq} = \sqrt{\frac{A}{\pi}}
-]
-
-Two modes are available:
-
-* `xy_area_est` (default)
-* `sphere_volume`
-
----
-
-## ⚙️ Requirements
-
-* Python ≥ 3.9
-* numpy
-* scipy
-* scikit-image
-* matplotlib
-* tifffile
-* napari
-
-Install:
-
-```bash
-pip install numpy scipy scikit-image matplotlib tifffile napari pyqt5
-```
-
----
-
-## 📊 Input Data
-
-* 3D grayscale TIFF stack
-* Cylindrical core geometry
-* Typical voxel size: ~7.14 µm
-
----
-
-## ⚠️ Important Notes
-
-* PSD represents **CT-resolved pore clusters**, not pore throats
-* Results are **resolution-dependent**
-* Suitable for **comparative analysis between samples**
-
----
-
-## 📁 Repository Structure
-
-```
 PERCOLATE/
 │
-├── 01-Interactive-segmentation.py
-├── 02A-Batch segmentation.py
-├── 02B-Pore-Clustering.py
-├── 03-Visulaizer-Pore-Clustering.py
+├── scripts/
+│   ├── 01-Interactive-segmentation.py
+│   ├── 02A-Batch-segmentation.py
+│   ├── 02B-Pore-Clustering.py
+│   └── 03-Visualizer-Pore-Clustering.py
 │
-├── Raw_TIFF_Slices/
-├── Segmentation_Parameters/
-├── Batch_Output/
-├── Pore_Clustering_Output/
+├── figures/
+│   ├── example_result.png
+│   ├── porosity_vs_slice.png
+│   └── porosity_distribution.png
 │
+├── data/
+│   └── pore_size_histogram_preview.csv
+│
+├── example_dataset/
+├── outputs/
+├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 📌 Citation
+## Example Dataset
 
-If you use PERCOLATE in your research, please cite:
+A reduced dataset (3 slices) is included for demonstration due to GitHub file size limitations.
 
-**PERCOLATE: A reproducible micro-CT framework for cylindrical core pore segmentation and 3D quantitative analysis**
-URL: 
+* Format: TIFF stack
+* Naming convention:
+  `block00000019_z0000.tif`, `block00000019_z0001.tif`, ...
+* Voxel size: ~7.14 µm
+* Geometry: cylindrical core sample
+
 ---
 
-## 👨‍🔬 Author
+## Output Data
 
-Atefeh Vafaie, Iman R. Kivi, Victor Vilarrasa
-atefeh.vafaie@csic.es
-Global Change Research Group, IMEDEA, CSIC-UIB, Esporles, Spain
+Example outputs include:
 
+* Pore masks (TIFF stack)
+* Porosity values per slice
+* Pore size distribution (CSV)
+* 3D visualization volumes
+
+The file:
+
+`data/pore_size_histogram_preview.csv`
+
+contains pore size distribution data derived from connected-component analysis.
+
+---
+
+## Installation
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+
+pip install -r requirements.txt
+```
+
+---
+
+## Usage
+
+```bash
+python 01-Interactive-segmentation.py
+python 02A-Batch-segmentation.py
+python 02B-Pore-Clustering.py
+python 03-Visualizer-Pore-Clustering.py
+```
+
+---
+
+## Notes and Limitations
+
+* Pore sizes are based on equivalent radius approximations
+* Sub-resolution pores may be merged due to resolution limits
+* Results are most suitable for comparative analysis
+* Visualization uses downsampled volumes for performance
+
+---
+
+## Citation
+
+*PERCOLATE: A Reproducible Micro-CT Framework for Cylindrical Core Pore Segmentation and 3D Quantitative Analysis*
+URL:
+
+---
+
+
+## Acknowledgements
+
+Developed for reproducible micro-CT analysis of porous geological materials.
